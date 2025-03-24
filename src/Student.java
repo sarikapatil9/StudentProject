@@ -20,10 +20,14 @@ public class Student {
 			this.age = age;
 			this.courses = new ArrayList<String>();
 		}
+		else {
+			throw new RuntimeException("unable to initialize the student: wrong data Given , Please try again");
+		}
+		
 	}
 
 	private boolean validtaeStudentID(int studentId) {
-		if (studentId > 1 && studentId < 1000)
+		if (studentId >= 1 && studentId <= 1000)
 			return true;
 		else {
 			System.err.println("Student id should be in the range 1 to 1000 only");
@@ -33,10 +37,10 @@ public class Student {
 	}
 
 	private boolean validateCourse(String course) {
-		if (course == "java" || course == "dsa" || course == "sql" || course == "api" || course == "selenium")
+		if (course.equalsIgnoreCase("java")||course.equalsIgnoreCase("dsa")||course.equalsIgnoreCase("api")||course.equalsIgnoreCase("selenium"))
 			return true;
 		else {
-			System.err.println("you can enroll only for jav/dsa/api/selenium courses only");
+			System.err.println("you can enroll only for java/dsa/api/selenium courses only");
 			return false;
 		}
 	}
@@ -48,7 +52,8 @@ public class Student {
 
 		if (matcher.matches())
 			return true;
-
+		else
+			System.err.println("the entered name does not match the criteria,please enter a valid name");
 		return false;
 	}
 
